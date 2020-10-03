@@ -1,0 +1,21 @@
+centos7命令
+netstat -anp	打开进程管理
+kill -9 pid		关闭进程（如kill -9 6191）
+rm -f XXX		删除文件
+rm -rf XXX	删除文件夹
+cd /XXX		进入路径，如cd /graduate-project
+ls		显示当前路径下的所有文件
+mkdir XXX	创建路径
+vi /etc/profile	编辑/etc/profile文件（i-insert，esc-退出编辑，:q退出，:wq-保存并退出，:q!-强制不保存退出，）
+
+Java命令
+java -jar jar包名		前台运行jar包，关闭SSH终端或Ctrl+c停止运行
+nohup java -jar jar包名 &	后台运行jar包，生成log文件在jar包同一路径下的nohup.out中
+
+docker命令
+docker pull container-name:tag	安装对应容器，container-name容器名，tag版本
+docker images	显示所有已安装容器
+docker ps -a	显示所有运行过的容器
+docker run -p 3306:3306 --name mysql01 -e MYSQL_ROOT_PASSWORD=980820 -d mysql:5.6	运行镜像名mysql:5.6命名为mysql01的容器，设置密码为980820，-d后台运行，-p将服务器端口开放给mysql默认端口3306
+docker run -p 6379:6379 --name myredis -d redis	运行redis容器，-p将服务器端口开放给redis默认端口6379:6379
+docker ps		显示所有当前正在运行的容器

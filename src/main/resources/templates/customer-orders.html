@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>顾客订单</title>
+    <link href="/images/logo.png" rel="icon" type="image/x-ico">
+    <link th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}" rel="stylesheet" crossorigin="anonymous">
+    <link href="/css/customer-orders.css" rel="stylesheet" crossorigin="anonymous">
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"  type="text/javascript" crossorigin="anonymous"></script>
+    <script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}" type="text/javascript" crossorigin="anonymous"></script>
+    <script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}" type="text/javascript" crossorigin="anonymous"></script>
+    <script src="/js/customer-orders.js" type="text/javascript"></script>
+</head>
+<body>
+    <input type="text" th:value="${customerId}" id="customerIdInput" hidden>
+    <nav class="navbar navbar-light bg-light" id="topDiv">
+        <a th:href="@{/}">
+            <img id="logImg" src="/images/logo.png" class="mr-3">
+            <h5 id="logH5">首页</h5>
+        </a>
+        <div class="navbar-brand dropdown" id="loginDiv" >
+            <a class="input-group" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="input-group-prepend">
+                    <span class="input-group-text login">@</span>
+                </div>
+                <span class="form-control login" id="loginUser" th:text="${loginUser}"></span>
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/customer-orders">订单管理</a>
+                <a class="dropdown-item" th:href="@{/login/register-info}">账号信息</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">退出账号</a>
+            </div>
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">是否退出</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            是否退出系统？
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                            <a class="btn btn-primary" th:href="@{/login}">退出</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div style="text-align: center;height: 50px;">
+        <h5 style="line-height: 50px;">顾客订单管理（每天凌晨3点自动清除昨天餐厅未确认的订单）</h5>
+    </div>
+    <div id="ordersList">
+
+    </div>
+    <input type="text" id="modeOfPayment" hidden>
+    <button id="selectPaymentBtn" data-toggle="modal" data-target="#selectPaymentModal" hidden="hidden"></button>
+    <!-- Modal -->
+    <div class="modal fade"  data-backdrop="static" id="selectPaymentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe2" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabe2">请选择支付方式</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span id="selectSpan">共计XX元，请选择支付方式：</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#paymentModal" onclick="selectWeChat()">微信支付</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#paymentModal" onclick="selectZhiFuBao()">支付宝支付</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade"  data-backdrop="static" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe3" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabe3">扫码支付</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <span id="totalSpan" style="color: red;font-weight: bold;">共计XX元</span>
+                    </div>
+                    <div class="text-center">
+                        <img id="QRcode" class="rounded" style="width: 50%;height: 50%;">
+                    </div>
+                    <span id="finalReminder"></span>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" type="button" class="btn btn-danger" id="submitPayment">支付成功</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消支付</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+</body>
+</html>

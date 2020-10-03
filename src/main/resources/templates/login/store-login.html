@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Food在线-线上点餐，线下用（取）餐</title>
+    <link href="/images/logo.png" rel="icon" type="image/x-ico">
+    <link th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}" rel="stylesheet" crossorigin="anonymous">
+    <link href="/css/store-login.css" rel="stylesheet" crossorigin="anonymous">
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"  type="text/javascript" crossorigin="anonymous"></script>
+    <script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}" type="text/javascript" crossorigin="anonymous"></script>
+    <script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}" type="text/javascript" crossorigin="anonymous"></script>
+    <script src="/js/store-login.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="topDiv">
+        <a th:href="@{/store-login}">
+            <img id="logImg" src="/images/lion.png" class="mr-3">
+            <h5 id="logH5">欢迎商家注册使用</h5>
+        </a>
+        <a id="storeLogin" type="button" class="btn btn-primary" th:href="@{/login}">顾客 注册/登录</a>
+    </div>
+    <div id="loginDiv">
+        <div id="errorDiv">
+            <h4 id="error-msg">
+                <span  id="msg"  th:text="${msg}"></span>
+            </h4>
+        </div>
+        <form id="loginForm" method="post" th:action="@{/submit-store-login}">
+            <div class="form-group" id="emailDiv">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="email" id="emailInput" placeholder="请输入QQ号码" autofocus="autofocus" data-toggle="popover" title="为何使用QQ邮箱？" data-content="微信搜索启用“QQ邮箱提醒”功能，并打开“接收邮箱提醒”即可在微信实时接收到点餐邮件提醒。且不会向顾客暴露您的QQ邮箱。" data-placement="top">
+                    <div class="input-group-append">
+                        <span class="input-group-text">@qq.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" id="securityDiv">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="securityCode" placeholder="邮箱验证码">
+                    <div class="input-group-append">
+                        <input class="btn btn-outline-secondary" type="button" id="produceSecurity" value="获取验证码"></input>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-danger" id="loginSubmit">商家 注册/登录</button>
+        </form>
+    </div>
+    <div id="footerDiv">designed by Jinbing.Xiao@2020</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+body{
+    width: 80%;
+    margin:0px auto;
+    background-color: #fff5f4;
+}
+
+#infoEditDiv{
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      font-weight: bolder;
+}
+#errorDiv{
+    height: 50px;
+    text-align: center;
+    color: red;
+}
+#submitForm{
+    width: 100%;
+    margin:0px auto;
+}
+#submitInfoDiv{
+    width: 100%;
+    margin:0px auto;
+    text-align: center;
+}
+#submitInfo{
+    margin: 20px auto;
+}
+#errorMsg{
+    margin-top: 30px;
+}
+#infoDiv{
+    width: 80%;
+    margin: 0px auto;
+}
+.star{
+    float: left;
+    color: red;
+    margin-bottom: .5rem;
+}
+#mapService{
+    width: 100%;
+    height: 300px;
+    border: 1px solid orange;
+}
+#latInput,#lngInput,#stateInput,#timeEndInput,#timeBeginInput{
+    display:none
+}
+

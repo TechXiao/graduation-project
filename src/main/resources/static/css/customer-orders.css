@@ -1,0 +1,57 @@
+body{
+    width: 80%;
+    margin:0px auto;
+}
+#topDiv{
+    height: 64px;
+}
+#logImg{
+    float: left;
+    height: 48px;
+    width: 48px;
+}
+#logH5{
+    float: left;
+    line-height: 48px;
+    color: black;
+}
+#loginDiv{
+    cursor: pointer;
+}
+.login{
+    background-color: darkturquoise;
+}
+#loginUser{
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 140px;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+.customer-name{
+    height: 30px;
+    line-height: 30px;
+    color: black;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 140px;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+.order-card{
+    margin-top: 5px;
+}
+.payment{
+    margin-top: 20px;
+    text-align: center;
+}
+.time{
+    float: right;
+}
+#errorDiv{
+    text-align: center;
+    height: auto;
+}
+#errorH5{
+    line-height: 500px;
+}

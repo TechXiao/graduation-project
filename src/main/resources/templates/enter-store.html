@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${'餐厅首页：'+storeName}"></title>
+    <link href="/images/logo.png" rel="icon" type="image/x-ico">
+    <link th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}" rel="stylesheet" crossorigin="anonymous">
+    <link href="/css/enter-store.css" rel="stylesheet" crossorigin="anonymous">
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"  type="text/javascript" crossorigin="anonymous"></script>
+    <script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}" type="text/javascript" crossorigin="anonymous"></script>
+    <script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}" type="text/javascript" crossorigin="anonymous"></script>
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/api?v=3.0&ak=8ZaSszE5BQ92yWkahji7bXs9ioGWXLQ6"></script>
+    <script src="/js/enter-store.js" type="text/javascript"></script>
+</head>
+<body>
+<input id="loginUserEmailInput" th:value="${loginUserEmail}" hidden>
+    <div id="orderA" onclick="submitOrder()" title="下单">
+        <div id="orderDiv">
+            <span id="orderQuantity" th:text=0></span>
+        </div>
+        <div href="#" id="shoppingCart">
+            <img src="/images/order.png" id="shoppingCartImg">
+        </div>
+    </div>
+    <a href="#topDiv" id="goTop" title="去顶部">
+        <img src="/images/gotop.png" id="gotopImg">
+    </a>
+    <a href="#mapService" id="storePosition" title="餐厅地址">
+        <img src="/images/position.png" id="storePositionImg">
+    </a>
+    <input type="text" th:value="${storeId}" id="storeIdInput" hidden>
+    <input type="text" th:value="${positionLng}" id="positionLngInput" hidden>
+    <input type="text" th:value="${positionLat}" id="positionLatInput" hidden>
+    <nav class="navbar navbar-light bg-light" id="topDiv">
+        <a th:href="@{/}">
+            <img id="logImg" src="/images/logo.png" class="mr-3">
+            <h5 id="logH5">首页</h5>
+        </a>
+        <div class="navbar-brand dropdown" id="loginDiv" >
+            <a class="input-group" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="input-group-prepend">
+                    <span class="input-group-text login">@</span>
+                </div>
+                <span class="form-control login" id="loginUser" th:text="${userName}"></span>
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/customer-orders">订单管理</a>
+                <a class="dropdown-item" th:href="@{/login/register-info}">账号信息</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">退出账号</a>
+            </div>
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">是否退出</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            是否退出系统？
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                            <a class="btn btn-primary" th:href="@{/login}">退出</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="card mb-3" id="storeInfoDiv">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img th:src="${'/storePictures/'+storePicture}" class="card-img" id="storePicture" alt="餐厅照片">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${storeName}">餐厅名称</h5>
+                    <p class="card-text" th:text="${'地址：'+storeAddress}">地址</p>
+                    <p class="card-text" th:text="${'公告：'+storeNotice}">公告</p>
+                    <p class="card-text">
+                        <small class="text-muted" th:text="${'座位数：'+storeCapacity+'个'}">餐厅座位数</small>
+                        <small class="text-muted small-formart" th:text="${'备餐时间：'+storeEquipmentEatTime+'分钟'}">备餐时间</small>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-light bg-light">
+        <ul class="nav nav-pills"  id="foodListUL">
+
+        </ul>
+    </nav>
+
+    <div data-spy="scroll" data-target="#foodListUL" data-offset="0" id="foodListDiv">
+
+    </div>
+    <div id="mapService"></div>
+</body>
+</html>

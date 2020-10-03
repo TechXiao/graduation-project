@@ -1,0 +1,41 @@
+body{
+    width: 80%;
+    margin:0px auto;
+}
+#topDiv{
+    height: 64px;
+}
+.login{
+    background-color: darkturquoise;
+}
+#loginDiv{
+    cursor: pointer;
+}
+#submitLocationForm{
+    margin-top: 5px;
+}
+#logImg{
+    float: left;
+    height: 48px;
+    width: 48px;
+}
+#logH5{
+    float: left;
+    line-height: 48px;
+    color: black;
+}
+#loginUser{
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 140px;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+#latInput,#lngInput{
+    display:none
+}
+#submitInfoDiv{
+    width: 100%;
+    margin:0px auto;
+    text-align: center;
+}

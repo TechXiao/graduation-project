@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加/编辑菜品</title>
+    <link href="/images/logo.png" rel="icon" type="image/x-ico">
+    <link th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}" rel="stylesheet" crossorigin="anonymous">
+    <link href="/css/add-food.css" rel="stylesheet" crossorigin="anonymous">
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"  type="text/javascript" crossorigin="anonymous"></script>
+    <script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}" type="text/javascript" crossorigin="anonymous"></script>
+    <script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}" type="text/javascript" crossorigin="anonymous"></script>
+    <script src="/js/add-food.js" type="text/javascript"></script>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light" id="topDiv">
+        <a th:href="@{/store}">
+            <img id="logImg" src="/images/logo.png" class="mr-3">
+            <h5 id="logH5">餐厅首页</h5>
+        </a>
+        <div class="navbar-brand dropdown" id="loginDiv" >
+            <a class="input-group" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="input-group-prepend">
+                    <span class="input-group-text login">@</span>
+                </div>
+                <span class="form-control login" id="loginUser" th:text="${loginUser}"></span>
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/store-orders">订单管理</a>
+                <a class="dropdown-item" th:href="@{/store-login/register-store-info}">账号信息</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">退出账号</a>
+            </div>
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">是否退出</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            是否退出系统？
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                            <a class="btn btn-primary" th:href="@{/store-login}">退出</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="foodEditDiv">添加/编辑菜品（菜品名称与之前添加的相同则会替换掉该名称菜品的所有信息）</div>
+    <form action="/submit-food" method="post" id="submitForm" enctype="multipart/form-data">
+        <div class="form-group">
+            <p class="star">*</p><label for="foodNameInput">菜品名称</label>
+            <input type="text" class="form-control info-box" name="foodName" id="foodNameInput" placeholder="菜品名"
+                   pattern="^.{0,20}$" data-toggle="tooltip" data-placement="right" title="仅限输入20字以内的文字"
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="descriptionTextarea">描述</label>
+            <textarea class="form-control" id="descriptionTextarea" placeholder="对菜品的介绍，仅限输入40字以内的文字" name="description" maxlength="40"></textarea>
+        </div>
+        <div class="form-group">
+            <p class="star">*</p><label for="hundredsSelect">价格</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">￥</span>
+                </div>
+                <select class="custom-select" id="hundredsSelect" title="百位数">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+                <select class="custom-select" id="decadeSelect" title="十位数">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+                <select class="custom-select" id="unitSelect" title="个位数">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+                <input type="text" value="." disabled style="text-align: center;font-weight: bold" title="小数点">
+                <select class="custom-select" id="oneDecimalSelect" title="一位小数">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+                <select class="custom-select" id="twoDecimalSelect" title="两位小数">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+            </div>
+        </div>
+        <input type="text" hidden="hidden" id="priceInput" name="price">
+        <div class="form-group">
+            <p class="star">*</p><label for="groupInput">菜品分组</label>
+            <input type="text" class="form-control info-box" name="foodGroup" id="groupInput" placeholder="菜品分组名称"
+                   pattern="^.{0,10}$" data-toggle="tooltip" data-placement="right" title="仅限输入10字以内的文字"
+                   required>
+        </div>
+        <div class="form-group">
+            <p class="star">*</p><label for="stateSelect" required>菜品状态</label>
+            <select class="form-control" id="stateSelect" name="state" >
+                <option value="0">有货</option>
+                <option value="1">无货</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <p class="star">*</p><label for="foodPicture">菜品照片（文件大小不超过2MB）</label>
+            <input type="file" class="form-control-file" id="foodPicture" name="foodPictureFile" required>
+        </div>
+        <div id="submitInfoDiv">
+            <button id="submitInfo" class="btn btn-success">确认添加菜品</button>
+        </div>
+    </form>
+</body>
+</html>

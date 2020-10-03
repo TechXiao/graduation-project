@@ -1,0 +1,86 @@
+body{
+    width: 80%;
+    margin:0px auto;
+}
+#topDiv{
+    height: 64px;
+}
+#logImg{
+    float: left;
+    height: 48px;
+    width: 48px;
+}
+.login{
+    background-color: darkturquoise;
+}
+#loginUser{
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 140px;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+.small-formart{
+    margin-left: 20px;
+}
+#loginDiv{
+    cursor: pointer;
+}
+#logH5{
+    float: left;
+    line-height: 48px;
+    color: black;
+}
+#storeInfoDiv{
+    margin-top: 5px;
+    height: auto;
+    max-height: 325px;
+}
+#storePicture{
+    height: 100%;
+    max-height: 320px;
+}
+
+.groupList{
+    background-color: red;
+    height: 400px;
+    width: 100%;
+}
+#goTop{
+    position:fixed;
+    right: 60px;
+    bottom:40px;
+}
+#gotopImg{
+    width: 50px;
+    height: 50px;
+}
+
+#foodListDiv{
+    height: 600px;
+}
+.food-img{
+    height: 200px;
+}
+.presentation-p{
+    height: 60px;
+    width: 100%;
+}
+.food-title{
+    max-height: 24px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+.go-shopping{
+    margin-top: 5px;
+    display: block;
+}
+.available-judge{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.delete-btn{
+    margin-left: 120px;
+}

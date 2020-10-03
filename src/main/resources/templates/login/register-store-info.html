@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Access-Control-Allow-Origin" name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <title>商家信息</title>
+    <link href="/images/logo.png" rel="icon" type="image/x-ico">
+    <link th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}" rel="stylesheet" crossorigin="anonymous">
+    <link href="/css/register-store-info.css" rel="stylesheet" crossorigin="anonymous">
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}" type="text/javascript" crossorigin="anonymous"></script>
+    <script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}" type="text/javascript"
+            crossorigin="anonymous"></script>
+    <script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}" type="text/javascript"
+            crossorigin="anonymous"></script>
+    <script src="/js/register-store-info.js" type="text/javascript"></script>
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/api?v=3.0&ak=8ZaSszE5BQ92yWkahji7bXs9ioGWXLQ6"></script>
+</head>
+<body>
+<a th:href="@{/store}">
+    <img id="registerBG" src="/images/storeRegisterBG.jpg" class="img-fluid" alt="O2O餐饮，把餐厅放在线上，提高餐厅的曝光率，增加客源" title="点击此图，返回餐厅首页。不保存修改的数据">
+</a>
+
+<div id="infoDiv">
+    <div id="infoEditDiv">商家信息注册/修改</div>
+    <div id="errorDiv">
+        <h5 id="errorMsg" th:text="${msg}"></h5>
+    </div>
+
+    <form action="/submit-store-info" method="post" id="submitForm" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="emailInput">QQ邮箱</label>
+            <input type="email" class="form-control" name="email" id="emailInput"
+                   th:each="cookie :${#httpServletRequest.getCookies()}"
+                   th:if="${cookie.getName().equals('loginEmail')}" th:value="${cookie.getValue()}" readonly>
+        </div>
+        <div class="form-group">
+            <p class="star">*</p><label for="storeNameInput">餐厅名称</label>
+            <input type="text" class="form-control info-box" name="storeName" id="storeNameInput" placeholder="餐厅全称"
+                   pattern="^.{0,20}$" data-toggle="tooltip" data-placement="right" title="仅限输入20字以内的文字"
+                   th:value="${loginStoreName}"  required>
+        </div>
+        <div class="form-group">
+            <p class="star">*</p><label for="phoneNumberInput">手机号码</label>
+            <input type="text" class="form-control info-box" name="phoneNumber" id="phoneNumberInput"
+                   placeholder="手机号码" pattern="[0-9]{11}" data-toggle="tooltip" data-placement="right"
+                   th:value="${loginStorePhoneNumber}" title="仅限输入11位数字的手机号码" required>
+        </div>
+        <div class="form-group">
+            <p class="star">*</p><label for="capacityInput">餐厅容量</label>
+            <input type="text" class="form-control info-box" name="capacity" id="capacityInput" placeholder="餐厅座位数"
+                   pattern="^[0-9]{0,3}$" data-toggle="tooltip" data-placement="right"
+                   th:value="${loginStoreCapacity}" title="仅支持输入1~999以内的数字" required>
+        </div>
+        <div class="form-group">
+            <p class="star">*</p><label for="equipmentEatTimeInput">备餐时间（分钟）</label>
+            <input type="text" class="form-control info-box" name="equipmentEatTime" id="equipmentEatTimeInput"
+                   placeholder="准备菜品需要的时间" pattern="^[0-9]{0,3}$" data-toggle="tooltip" data-placement="right"
+                   th:value="${loginStoreEquipmentEatTime}" title="仅支持输入1~999以内的数字" required>
+        </div>
+        <div class="form-group">
+            <input type="text" id="stateInput" th:value="${loginStoreState}">
+            <p class="star">*</p><label for="stateSelect" required>餐厅状态</label>
+            <select class="form-control" id="stateSelect" name="state" >
+                <option value="0">营业中</option>
+                <option value="1">休息</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <p class="star">*</p><label for="storePictureFile">餐厅照片（文件大小不超过2MB）</label>
+            <input type="file" class="form-control-file" id="storePictureFile" name="storePictureFile" required>
+        </div>
+        <div class="form-group">
+            <p class="star">*</p><label for="licensePictureFile">营业执照（文件大小不超过2MB）</label>
+            <input type="file" class="form-control-file" id="licensePictureFile" name="licensePictureFile" required>
+        </div>
+        <div class="form-group">
+            <p class="star">*</p><label for="identityPictureFile">经营者身份证正面照片（文件大小不超过2MB）</label>
+            <input type="file" class="form-control-file" id="identityPictureFile" name="identityPictureFile" required>
+        </div>
+        <div class="form-group">
+            <p class="star">*</p><label for="wechatPictureFile">微信收款码</label>
+            <input type="file" class="form-control-file" id="wechatPictureFile" name="wechatPictureFile" required>
+        </div>
+        <div class="form-group">
+            <p class="star">*</p><label for="zhifubaoPictureFile">支付宝收款码</label>
+            <input type="file" class="form-control-file" id="zhifubaoPictureFile" name="zhifubaoPictureFile" required>
+        </div>
+        <div class="form-group">
+            <p class="star">*</p><label id="city-label" for="cityInput">餐厅所在城市</label>
+            <input type="text" class="form-control info-box" name="city" id="cityInput" placeholder="地级市全称（如XX市，否则无法被顾客看到）"
+                   pattern="^.{0,10}$" data-toggle="tooltip" data-placement="right" title="仅限输入10字以内的文字"
+                   th:value="${loginStoreCity}" required>
+        </div>
+        <div class="form-group">
+            <p class="star">*</p><label for="searchInput">餐厅所在位置(在以下地图中标记餐厅所在位置：可使用搜索功能，搜索之前必须确保以上餐厅所在城市正确)</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="餐厅附近标志性建筑" id="searchInput">
+                <div class="input-group-append">
+                    <button class="btn btn-warning" type="button" id="searchBtn">搜索</button>
+                </div>
+            </div>
+            <div id="mapService"></div>
+        </div>
+        <input type="text" id="latInput" name="positionLat" th:value="${loginStorePositionLat}">
+        <input type="text" id="lngInput" name="positionLng" th:value="${loginStorePositionLng}">
+        <div class="form-group">
+            <label for="addressInput">餐厅地址</label>
+            <p class="star">*</p>
+            <input type="text" class="form-control info-box" name="address" id="addressInput" placeholder="顾客容易找到的餐厅地址"
+                   pattern="^.{0,25}$" data-toggle="tooltip" data-placement="right" title="仅限输入25字以内的文字"
+                   th:value="${loginStoreAddress}" required>
+        </div>
+        <div class="mb-3">
+            <label for="noticeTextarea">公告</label>
+            <textarea class="form-control" id="noticeTextarea" placeholder="想对顾客说的话（250字以内)" name="notice" maxlength="250" th:text="${loginStoreNotice}"></textarea>
+        </div>
+        <div id="submitInfoDiv">
+            <button id="submitInfo" class="btn btn-success">确认注册/修改信息</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

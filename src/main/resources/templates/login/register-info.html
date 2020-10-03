@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>顾客信息</title>
+    <link href="/images/logo.png" rel="icon" type="image/x-ico">
+    <link th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}" rel="stylesheet" crossorigin="anonymous">
+    <link href="/css/register-info.css" rel="stylesheet" crossorigin="anonymous">
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}" type="text/javascript" crossorigin="anonymous"></script>
+    <script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}" type="text/javascript"
+            crossorigin="anonymous"></script>
+    <script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}" type="text/javascript"
+            crossorigin="anonymous"></script>
+    <script src="/js/register-info.js" type="text/javascript"></script>
+</head>
+<body>
+<a th:href="@{/}">
+    <img id="registerBG" src="/images/registerBG.jpg" class="img-fluid" alt="线上预订点餐，线下用（取）餐" title="点击此图，返回首页。不保存修改的数据">
+</a>
+
+<div id="infoDiv">
+    <div id="infoEditDiv">顾客信息注册/修改</div>
+
+    <form action="/submit-info" method="post" id="submitForm">
+        <div class="form-group">
+            <label for="emailInput">QQ邮箱</label>
+            <input type="email" class="form-control" name="email" id="emailInput" th:each="cookie :${#httpServletRequest.getCookies()}" th:if="${cookie.getName().equals('loginEmail')}" th:value="${cookie.getValue()}" readonly>
+        </div>
+        <div class="form-group">
+            <p class="star">*</p><label for="nicknameInput">用户名</label>
+            <input type="text" class="form-control info-box" name="userName" id="nicknameInput" th:value="${loginUserName}" placeholder="请输入用户名"
+                   pattern="^.{0,20}$" data-toggle="tooltip" data-placement="right" title="仅限输入20字以内的文字" required>
+        </div>
+        <div class="form-group">
+            <p class="star">*</p><label for="phoneNumberInput">手机号码</label>
+            <input type="text" class="form-control info-box" name="phoneNumber" id="phoneNumberInput" th:value="${loginUserPhoneNumber}"
+                   placeholder="请输入取餐手机号码" pattern="[0-9]{11}" data-toggle="tooltip" data-placement="right" title="仅限输入11位数字的手机号码"  required>
+        </div>
+        <input type="text" id="latInput" name="positionLat">
+        <input type="text" id="lngInput" name="positionLng">
+        <input type="text" id="cityInput" name="city">
+        <input type="text" id="addressInput" name="address">
+        <div id="submitInfoDiv">
+            <button id="submitInfo" class="btn btn-success">确认注册/修改信息</button>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

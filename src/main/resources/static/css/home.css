@@ -1,0 +1,53 @@
+body{
+    width: 80%;
+    margin:0px auto;
+}
+.login{
+    background-color: darkturquoise;
+}
+#loginDiv{
+    cursor: pointer;
+}
+#loginUser{
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 140px;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+#searchDiv{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#search{
+    background-color: deepskyblue;
+}
+#searchBtn{
+    color: black;
+}
+#distanceH3{
+    float: right;
+}
+.card-margin{
+    margin-bottom: 5px;
+}
+#dropdownA{
+    text-decoration : none;
+}
+#errorH5{
+    line-height: 500px;
+}
+#storeList{
+    height: auto;
+}
+#errorDiv{
+    text-align: center;
+    height: auto;
+}
+.notice{
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}

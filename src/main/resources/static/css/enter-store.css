@@ -1,0 +1,138 @@
+body{
+    width: 80%;
+    margin:0px auto;
+}
+#topDiv{
+    height: 64px;
+}
+#errorDiv{
+    text-align: center;
+    height: auto;
+}
+#errorH5{
+    line-height: 300px;
+}
+#logImg{
+    float: left;
+    height: 48px;
+    width: 48px;
+}
+.login{
+    background-color: darkturquoise;
+}
+#loginUser{
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 140px;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+.small-formart{
+    margin-left: 20px;
+}
+#loginDiv{
+    cursor: pointer;
+}
+#logH5{
+    float: left;
+    line-height: 48px;
+    color: black;
+}
+#storeInfoDiv{
+    margin-top: 5px;
+    height: auto;
+    max-height: 325px;
+}
+#storePicture{
+    height: 100%;
+    max-height: 320px;
+}
+
+.groupList{
+    background-color: red;
+    height: 400px;
+    width: 100%;
+}
+#goTop{
+    position:fixed;
+    right: 30px;
+    bottom:40px;
+}
+#gotopImg{
+    width: 50px;
+    height: 50px;
+}
+#shoppingCart{
+    position:fixed;
+    right: 30px;
+    top:100px;
+}
+#orderA{
+    cursor: pointer;
+}
+#orderDiv{
+    position:fixed;
+    right: 30px;
+    top:75px;
+    background-image: url("../images/bubble.png");
+    height: 32px;
+    width: 32px;
+    text-align: center;
+    color: white;
+}
+#shoppingCartImg{
+    width: 50px;
+    height: 50px;
+}
+#storePosition{
+    position:fixed;
+    right: 30px;
+    top:50%;
+}
+#storePositionImg{
+    width: 50px;
+    height: 50px;
+}
+#foodListUL{
+    height: auto;
+}
+#foodListDiv{
+    height: auto;
+}
+.food-img{
+    height: 200px;
+}
+.presentation-p{
+    height: 60px;
+    width: 100%;
+}
+.food-title{
+    max-height: 24px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+.go-shopping{
+    margin-top: 5px;
+    display: block;
+}
+#mapService{
+    width: 100%;
+    height: 300px;
+    border: 1px solid orange;
+    margin-bottom: 50px;
+}
+.add-sub-div{
+    width: 100%;
+    height: 24px;
+    padding: 6px;
+    border: 1px;
+    margin-top: 5px;
+}
+.add-sub-img{
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    margin-left: 0px;
+}

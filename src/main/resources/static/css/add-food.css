@@ -1,0 +1,51 @@
+body{
+    width: 80%;
+    margin:0px auto;
+}
+#topDiv{
+    height: 64px;
+}
+#logImg{
+    float: left;
+    height: 48px;
+    width: 48px;
+}
+#logH5{
+    float: left;
+    line-height: 48px;
+    color: black;
+}
+#loginDiv{
+    cursor: pointer;
+}
+.login{
+    background-color: darkturquoise;
+}
+#loginUser{
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 140px;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+#foodEditDiv{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-weight: bolder;
+}
+#submitForm{
+    width: 100%;
+    margin:0px auto;
+}
+.star{
+    float: left;
+    color: red;
+    margin-bottom: .5rem;
+}
+
+#submitInfoDiv{
+    width: 100%;
+    margin:0px auto;
+    text-align: center;
+}

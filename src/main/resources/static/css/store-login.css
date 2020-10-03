@@ -1,0 +1,59 @@
+#topDiv{
+    height: 64px;
+}
+#logH5{
+    color: black;
+}
+#logImg{
+    float: left;
+    margin-left: 100px;
+    height: 64px;
+    width: 64px;
+}
+#logH5{
+    float: left;
+    line-height: 64px;
+}
+#storeLogin{
+    color: white;
+    float: right;
+    margin-right: 100px;
+    margin-top: 15px;
+}
+#loginForm{
+    width: 280px;
+    height: 200px;
+    margin:0px auto;
+    padding-top: 20px;
+}
+#errorDiv{
+    margin:0px auto;
+    width:100%;
+    height: 180px;
+    text-align: center;
+    float: left;
+}
+#msg{
+    color:red;
+}
+#loginDiv{
+    height: 600px;
+    background-image: url(../images/storeloginBG.jpg);
+}
+
+#loginSubmit{
+    width: 100%;
+}
+
+#emailDiv,#securityDiv{
+    margin-bottom: 24px;
+}
+#produceSecurity{
+    background-color: orange;
+}
+#footerDiv{
+    width: 280px;
+    text-align: center;
+    margin:0px auto;
+    padding-top: 10px;
+}
