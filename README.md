@@ -3,7 +3,7 @@
 *建议使用IDEA打开，记得改maven配置<br>
 
 ###### 项目名称：Food在线-线上点餐，线下用（取）餐<br>
-1、完成时间：2020年4月*建议使用IDEA打开，记得改maven配置<br>
+1、完成时间：2020年4月<br>
 2、技术涵盖：SpringBoot、Mybatis、MySQL、Redis、Druid、Thymeleaf、Bootstrap、jQuery等。<br>
 3、开发工具：jdk1.8、Maven、编译器IntelliJ IDEA、数据库管理客户端Navicat Premium、Docker容器、SSH客户端SmarTTY、Redis管理客户端RedisDesktopManager、阿里云Linux服务器、Google Chrome。<br>
 4、访问地址：首页http://127.0.0.1/	管理员登录页http://127.0.0.1/admin 管理员账号jinbing.xiao@foxmail.com 密码12345600<br>
