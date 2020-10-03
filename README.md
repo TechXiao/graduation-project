@@ -1,5 +1,6 @@
 # graduation-project
 2020届软件工程本科毕业生毕业设计项目(针对web后端开发，需先将properties文件中的相关配置改对，后可用maven一键打成jar包直接运行)
+建议使用IDEA打开，记得改maven配置
 项目名称：Food在线-线上点餐，线下用（取）餐
 1、完成时间：2020年4月
 2、技术涵盖：SpringBoot、Mybatis、MySQL、Redis、Druid、Thymeleaf、Bootstrap、jQuery等。
